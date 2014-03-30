@@ -1,7 +1,7 @@
 // Store frame for motion functions
 var previousFrame = null;
 var paused = false;
-var pauseOnGesture = false;
+var pauseOnGesture = true;
 
 // Setup Leap loop with frame callback function
 var controllerOptions = {enableGestures: true};
@@ -129,6 +129,17 @@ Leap.loop(controllerOptions, function(frame) {
   // }
   // pointableOutput.innerHTML = pointableString;
 
+
+function sleep(ms){
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime()-start) > ms){
+      break;
+    }
+  }
+
+}
+
   // Display Gesture object data
   var gestureOutput = document.getElementById("gestureData");
   var gestureString = "";
@@ -145,8 +156,31 @@ Leap.loop(controllerOptions, function(frame) {
                     + "pointable IDs: " + gesture.pointableIds.join(", ") + ", "
                     + "duration: " + gesture.duration + " &micro;s, ";
           if (gesture.type == "swipe"){
-            togglePause();
-            gestureString += "WORKED";
+            console.log("swiped");
+
+
+            // sleep(200);
+            // var myVar=setInterval(function(){setGif()},200);
+
+        //   function setGif()
+        //   {
+            document.getElementById("slap").src="./images/slap.gif";
+        // }
+        // setGif();
+        // clearInterval(setGif);
+           //document.getElementById("slap").src="./images/slap-still.png";
+
+            // setTimeout(function() {
+            //     temp();
+            //     console.log("swiped");
+            // togglePause();
+            // //gestureString += "WORKED";
+            // }, 200 );
+
+            // var temp = function() {
+
+            // }
+            
           }
       // switch (gesture.type) {
       //   case "circle":
@@ -175,7 +209,7 @@ Leap.loop(controllerOptions, function(frame) {
   else {
     gestureString += "No gestures";
   }
-  gestureOutput.innerHTML = gestureString;
+  //gestureOutput.innerHTML = gestureString;
 
   // Store frame for motion functions
   previousFrame = frame;
