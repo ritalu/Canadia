@@ -1,7 +1,7 @@
 // Store frame for motion functions
 var previousFrame = null;
 var paused = false;
-var pauseOnGesture = false;
+var pauseOnGesture = true;
 
 // Setup Leap loop with frame callback function
 var controllerOptions = {enableGestures: true};
