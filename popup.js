@@ -145,8 +145,14 @@ Leap.loop(controllerOptions, function(frame) {
                     + "pointable IDs: " + gesture.pointableIds.join(", ") + ", "
                     + "duration: " + gesture.duration + " &micro;s, ";
           if (gesture.type == "swipe"){
+            console.log("slapped");
             togglePause();
-            gestureString += "WORKED";
+
+            document.getElementById("slap").src="./images/slap.gif";
+
+
+            var sound = new Audio('./Voice0004.mp3');
+            sound.play();
           }
       // switch (gesture.type) {
       //   case "circle":
@@ -175,7 +181,7 @@ Leap.loop(controllerOptions, function(frame) {
   else {
     gestureString += "No gestures";
   }
-  gestureOutput.innerHTML = gestureString;
+  // gestureOutput.innerHTML = gestureString;
 
   // Store frame for motion functions
   previousFrame = frame;
@@ -193,17 +199,17 @@ function vectorToString(vector, digits) {
 function togglePause() {
   paused = !paused;
 
-  if (paused) {
-    document.getElementById("pause").innerText = "Resume";
-  } else {
-    document.getElementById("pause").innerText = "Pause";
-  }
+  // if (paused) {
+  //   document.getElementById("pause").innerText = "Resume";
+  // } else {
+  //   document.getElementById("pause").innerText = "Pause";
+  // }
 }
 
-function pauseForGestures() {
-  if (document.getElementById("pauseOnGesture").checked) {
-    pauseOnGesture = true;
-  } else {
-    pauseOnGesture = false;
-  }
-}
+// function pauseForGestures() {
+//   if (document.getElementById("pauseOnGesture").checked) {
+//     pauseOnGesture = true;
+//   } else {
+//     pauseOnGesture = false;
+//   }
+// }
