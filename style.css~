@@ -5,7 +5,6 @@
     position:absolute;
     top:20px;
     left:205px;
-    visibility:hidden;
 }
 #slap{
     height:225px;
