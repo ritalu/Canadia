@@ -146,7 +146,7 @@ Leap.loop(controllerOptions, function(frame) {
                     + "pointable IDs: " + gesture.pointableIds.join(", ") + ", "
                     + "duration: " + gesture.duration + " &micro;s, ";
           if (gesture.type == "swipe"){
-		slapAnimation();
+		      slapAnimation();
           }
       // switch (gesture.type) {
       //   case "circle":
@@ -181,9 +181,13 @@ Leap.loop(controllerOptions, function(frame) {
   previousFrame = frame;
 })
 
-function slapAnimation() {
-            console.log("slapped");
+var slapped = false;
 
+function slapAnimation() {
+            if (slapped == false){
+
+            console.log("slapped");
+ 
             togglePause();
 
             document.getElementById("slap").src="./images/slap.gif";
@@ -191,12 +195,41 @@ function slapAnimation() {
 
             var sound = new Audio('./Voice0004.mp3');
             sound.play();
-	    document.getElementById("sorry").style.visibility="visible";
+	         document.getElementById("sorry").style.visibility="visible";
 
-            setTimeout(function() { temp();}, 2750);
+            document.getElementById("slapbutton").innerText = "Unslap!";
+            setTimeout(function() { temp();}, 2400);
+
+            slapped = true;
+          }
+
+          else {
+              console.log("reverse slapped");
+ 
+            togglePause();
+
+            document.getElementById("slap").src="./images/slap-reversed.gif";
+
+
+            var sound = new Audio('./Voice0004.mp3');
+            sound.play();
+           document.getElementById("sorry").style.visibility="visible";
+
+            setTimeout(function() { temp2();}, 2500);
+
+            slapped = false;
+
+          }
+
+            
 }
 
 function temp() {
+    document.getElementById("slap").src="./images/slap-reversed-still.png";
+    document.getElementById("sorry").style.visibility="hidden";
+}
+
+function temp2() {
     document.getElementById("slap").src="./images/slap-still.png";
     document.getElementById("sorry").style.visibility="hidden";
 }
