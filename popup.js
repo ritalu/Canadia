@@ -133,12 +133,6 @@ Leap.loop(controllerOptions, function(frame) {
   var gestureOutput = document.getElementById("gestureData");
   var gestureString = "";
 
-
-function temp() {
-    document.getElementById("slap").src="./images/slap-still.png";
-
-}
-
   if (frame.gestures.length > 0) {
     // if (pauseOnGesture) {
       
@@ -152,19 +146,7 @@ function temp() {
                     + "pointable IDs: " + gesture.pointableIds.join(", ") + ", "
                     + "duration: " + gesture.duration + " &micro;s, ";
           if (gesture.type == "swipe"){
-
-            console.log("slapped");
-
-            togglePause();
-
-            document.getElementById("slap").src="./images/slap.gif";
-
-
-            var sound = new Audio('./Voice0004.mp3');
-            sound.play();
-	           document.getElementById("sorry").style.visibility="visible";
-
-             setTimeout(function() { temp();}, 2750);
+		slapAnimation();
           }
       // switch (gesture.type) {
       //   case "circle":
@@ -198,6 +180,33 @@ function temp() {
   // Store frame for motion functions
   previousFrame = frame;
 })
+
+function slapAnimation() {
+            console.log("slapped");
+
+            togglePause();
+
+            document.getElementById("slap").src="./images/slap.gif";
+
+
+            var sound = new Audio('./Voice0004.mp3');
+            sound.play();
+	    document.getElementById("sorry").style.visibility="visible";
+
+            setTimeout(function() { temp();}, 2750);
+}
+
+function temp() {
+    document.getElementById("slap").src="./images/slap-still.png";
+    document.getElementById("sorry").style.visibility="hidden";
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    var button = document.getElementById("slapbutton");
+    button.addEventListener('click', function() {
+        slapAnimation();
+    });
+});
 
 function vectorToString(vector, digits) {
   if (typeof digits === "undefined") {
