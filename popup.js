@@ -71,7 +71,7 @@ function slapAnimation() {
 
     var sound = new Audio('./Voice0004.mp3');
     sound.play();
-    document.getElementById("sorry").style.visibility="visible";
+    document.getElementById("thankyou").style.visibility="visible";
 
     document.getElementById("slapbutton").innerText = "Slap!";
     setTimeout(function() { standby();}, 2500);
