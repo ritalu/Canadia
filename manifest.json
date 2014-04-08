@@ -5,7 +5,7 @@
           "description": "This extension lets you interact with a Canadian.",
             "version": "1.0",
                           "browser_action": {
-                                  "default_icon": "images/slap-still.png",
+                                  "default_icon": "images/hand.png",
                                       "default_popup": "popup.html"
                                         }
 }
