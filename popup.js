@@ -59,7 +59,7 @@ function slapAnimation() {
   document.getElementById("sorry").style.visibility="visible";
 
   document.getElementById("slapbutton").innerText = "Unslap!";
-  setTimeout(function() { standbyReversed();}, 2400);
+  setTimeout(function() { standbyReversed();}, 2500);
 
   slapped = true;
   } else {
